@@ -2070,49 +2070,437 @@ footer svg { color: var(--primary); }
   line-height: 1.5;
 }
 
-/* Responsive Media Queries */
-@media (max-width: 860px) {
-  .feature-grid, .planner-container {
-    grid-template-columns: 1fr;
+/* =========================================================
+   COMPREHENSIVE RESPONSIVE MOBILE & TABLET RULES
+   ========================================================= */
+
+/* Prevent any horizontal overflow anywhere */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+.app-shell {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.feature-card, .panel, .now-playing-panel, .message-paper, .smile-bubble-box {
+  min-width: 0;
+  max-width: 100%;
+}
+img, iframe, video {
+  max-width: 100%;
+}
+
+/* Tablet & Smaller Laptops (<= 960px) */
+@media (max-width: 960px) {
+  .app-shell {
+    padding: 0 4.5% 30px;
   }
-  .hydration-card, .checklist-card, .timer-card {
-    grid-column: span 1;
+  .feature-grid, .planner-container {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+  .feature-card, .love-jukebox-card, .timer-card, .hydration-card, .checklist-card {
+    grid-column: 1 / -1 !important;
+    width: 100%;
   }
   .hero {
     grid-template-columns: 1fr;
-    padding: 38px 6%;
+    padding: 38px 5%;
+    gap: 20px;
+  }
+  .hero-copy {
+    max-width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .eyebrow {
+    justify-content: center;
+  }
+  .hero-text {
+    margin: 0 auto 20px;
+  }
+  .hero-btn-row {
+    justify-content: center;
   }
   .hero-art {
-    margin-top: 15px;
-    height: 260px;
-  }
-  .affection-buttons-grid {
-    grid-template-columns: repeat(2, 1fr);
+    margin-top: 10px;
+    height: 250px;
   }
   .letters-envelope-grid {
     grid-template-columns: 1fr;
   }
+  .songs-list-grid {
+    grid-template-columns: 1fr;
+  }
+  .timer-card {
+    grid-column: span 1 !important;
+  }
 }
 
-@media (max-width: 560px) {
-  .app-shell { padding: 0 16px 24px; }
-  .topbar { height: 68px; }
-  .header-pill-btn span { display: none; }
-  .hero {
-    border-radius: 22px;
-    padding: 28px 20px 20px;
+/* Mobile Screens (<= 680px) */
+@media (max-width: 680px) {
+  .app-shell {
+    padding: 0 14px 24px;
   }
-  h1 { font-size: 38px; }
-  .mood-grid { grid-template-columns: repeat(4, 1fr); }
-  .ambient-buttons { grid-template-columns: 1fr; }
-  .water-cups-grid { grid-template-columns: repeat(4, 1fr); }
-  .smile-action-row { flex-direction: column; }
-  .smile-action-row button { width: 100%; }
+  .topbar {
+    height: 64px;
+  }
+  .brand {
+    font-size: 13.5px;
+    gap: 8px;
+  }
+  .brand-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 9px;
+  }
+  .topbar-actions {
+    gap: 6px;
+  }
+  .header-pill-btn {
+    padding: 6px 9px;
+    font-size: 10.5px;
+    gap: 4px;
+  }
+
+  /* Hero */
+  .hero {
+    border-radius: 20px;
+    padding: 26px 16px 20px;
+    margin: 18px 0 18px;
+  }
+  h1 {
+    font-size: clamp(30px, 8.5vw, 42px);
+    margin: 12px 0 8px;
+  }
+  .hero-lead {
+    font-size: 14.5px;
+    margin-bottom: 10px;
+  }
+  .hero-text {
+    font-size: 12px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .hero-btn-row {
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .primary-link, .hero-btn-row .soft-button {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-art {
+    height: 220px;
+    transform: scale(0.92);
+    transform-origin: center center;
+  }
+
+  /* Comfort Strip */
+  .comfort-strip {
+    padding: 12px 14px;
+    font-size: 11.5px;
+    margin-bottom: 22px;
+    border-radius: 14px;
+  }
+  .strip-sparkle {
+    display: none;
+  }
+
+  /* Nav Pills */
+  .nav-pills-wrap {
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+  .nav-pill-btn {
+    padding: 7px 12px;
+    font-size: 11px;
+    flex: 1 1 calc(50% - 6px);
+    justify-content: center;
+  }
+
+  /* Section Headings */
+  .section {
+    margin-bottom: 38px;
+  }
+  .section-heading h2, .closing-note h2 {
+    font-size: 24px;
+  }
+  .heading-doodle {
+    display: none;
+  }
+
+  /* Feature Cards */
+  .feature-card {
+    padding: 18px 14px;
+    border-radius: 18px;
+  }
+  .feature-card h3 {
+    font-size: 18px;
+  }
+  .card-subtitle {
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
+
+  /* Mood Card - 2 Columns on Mobile for maximum clarity */
+  .mood-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 7px;
+  }
+  .mood-option {
+    padding: 9px 6px;
+    border-radius: 11px;
+  }
+  .mood-option span {
+    font-size: 20px;
+  }
+  .mood-option small {
+    font-size: 9.5px;
+    line-height: 1.3;
+  }
+
+  /* Affection Station - 2 Columns on Mobile */
+  .affection-buttons-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px;
+  }
+  .affection-btn {
+    padding: 10px 6px;
+    border-radius: 12px;
+  }
+  .affection-btn-emoji {
+    font-size: 22px;
+  }
+  .affection-btn b {
+    font-size: 10px;
+  }
+  .affection-response-box {
+    padding: 12px;
+    gap: 10px;
+  }
+  .affection-response-icon {
+    font-size: 24px;
+  }
+
+  /* Reasons Jar - Stacks vertically */
+  .jar-display {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  .jar-glass {
+    margin: 0 auto;
+  }
+  .reason-paper {
+    width: 100%;
+    text-align: center;
+    padding: 14px 12px;
+  }
+  .reasons-bottom-bar {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+  .reasons-bottom-bar .soft-button {
+    justify-content: center;
+  }
+  .reasons-progress-tag {
+    justify-content: center;
+  }
+
+  /* Love Songs Jukebox */
+  .jukebox-mode-tabs {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .jukebox-tab-btn {
+    width: 100%;
+    min-width: 0;
+    padding: 9px 12px;
+    font-size: 11px;
+  }
+  .song-lang-pills {
+    gap: 5px;
+  }
+  .song-pill {
+    padding: 5px 9px;
+    font-size: 10px;
+  }
+  .now-playing-panel {
+    padding: 12px 10px;
+  }
+  .now-playing-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .now-playing-nav-btns {
+    width: 100%;
+    justify-content: center;
+  }
+  .now-playing-song-name {
+    font-size: 17px;
+  }
+  .love-song-iframe {
+    height: 190px;
+  }
+  .player-idle-placeholder {
+    height: 130px;
+    padding: 0 12px;
+  }
+  .vinyl-disc {
+    width: 60px;
+    height: 60px;
+  }
+  .idle-meta b {
+    font-size: 14px;
+  }
+  .idle-meta small {
+    display: none;
+  }
+  .add-song-inputs {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .songs-list-grid {
+    grid-template-columns: 1fr;
+    max-height: 240px;
+  }
+
+  /* Smile Card */
+  .smile-action-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .smile-action-row button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Hydration */
+  .water-cups-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+  .water-cup-btn {
+    padding: 8px 4px;
+  }
+  .water-cup-btn .cup-icon {
+    font-size: 18px;
+  }
+
+  /* Timer */
+  .timer-digits {
+    font-size: 38px;
+  }
+  .timer-mode-pills {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+  .timer-pill {
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+  .timer-controls {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* Coupons */
+  .coupon {
+    padding: 9px 10px;
+    gap: 8px;
+  }
+  .coupon-emoji {
+    font-size: 18px;
+  }
+  .coupon-actions-wrap {
+    gap: 4px;
+  }
+  .coupon-claim-btn {
+    padding: 3px 6px;
+    font-size: 8.5px;
+  }
+
+  /* Breathe Circle */
+  .breathe-visual-area {
+    height: 155px;
+  }
+  .breathe-circle {
+    width: 110px;
+    height: 110px;
+  }
+
+  /* Ambient Buttons */
+  .ambient-buttons {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .ambient-btn {
+    flex-direction: row;
+    padding: 10px 12px;
+    text-align: left;
+  }
+  .ambient-meta {
+    flex: 1;
+  }
+  .ambient-controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .volume-slider-row {
+    width: 100%;
+  }
+
+  /* Modals */
+  .letter-paper-modal {
+    padding: 22px 16px;
+    border-radius: 20px;
+    margin: 10px;
+  }
+  .letter-modal-top h4 {
+    font-size: 19px;
+  }
+  .letter-modal-body {
+    padding: 14px 12px;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+  .personalize-modal {
+    padding: 22px 16px;
+  }
+  .personalize-actions {
+    flex-direction: column;
+  }
+
+  /* Closing Note */
+  .closing-note {
+    padding: 32px 16px 26px;
+    border-radius: 20px;
+  }
+  .care-note {
+    padding: 0 4px;
+    font-size: 9.5px;
+  }
+
+  /* Floating Decors */
+  .floating-decor {
+    display: none;
+  }
+
+  /* Footer */
   footer {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 8px;
+    gap: 6px;
+    padding: 18px 0 0;
   }
 }
 
